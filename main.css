@@ -1,0 +1,33 @@
+/*---Variables---*/
+:root {
+    /*---Colors---*/
+    --main-bg-color: #1D1B26;
+    --main-text-color: #FD2D00;
+    --hover-color: #DF007C;
+    --shadow-color: #06191D;
+    /*---Breakpoints---*/
+    --sm-point: 576px;
+    --md-point: 768px;
+    --lg-point: 992px;
+    --extra-lg-point: 1200px;
+    --extra-extra-lg-point: 1400px;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+.wrapper {
+    padding: 50px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
