@@ -2,8 +2,8 @@
 :root {
     /*---Colors---*/
     --main-bg-color: #1D1B26;
-    --main-text-color: #FD2D00;
-    --hover-color: #DF007C;
+    --main-text-color: #FFFFFF;
+    --hover-color: #FD2D00;
     --shadow-color: #06191D;
     /*---Breakpoints---*/
     --sm-point: 576px;
@@ -29,5 +29,29 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    gap: 20px;
+}
+
+.side-menu__item {
+    margin-bottom: 1rem;
+}
+
+.side-menu__item a {
+    font-size: 1.8rem;
+    transition: 0.3s;
+}
+
+.side-menu__item a:hover {
+    color: var(--hover-color);
+    text-shadow: 4px 4px 2px rgba(253, 45, 0, 0.63);
+    cursor: pointer;
+}
+
+main {
+    flex: 1 0 auto;
 }
 

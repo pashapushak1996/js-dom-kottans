@@ -71,7 +71,7 @@ const characters = [
         "id": 11,
         "name": "Albert Einstein",
         "type": "",
-        "location":"Earth (Replacement Dimension)",
+        "location": "Earth (Replacement Dimension)",
         "image": "https://rickandmortyapi.com/api/character/avatar/11.jpeg",
     },
     {
@@ -126,7 +126,24 @@ const characters = [
     {
         "id": 20,
         "name": "Ants in my Eyes Johnson",
-        "location":  "Interdimensional Cable",
+        "location": "Interdimensional Cable",
         "image": "https://rickandmortyapi.com/api/character/avatar/20.jpeg",
     }
 ];
+
+//On page loaded
+function loadSideMenu() {
+    const sideMenuList = document.querySelector('.side-menu__list');
+
+    characters.forEach((character) => {
+        const sideMenuItem = document.createElement('li');
+
+        sideMenuItem.className = 'side-menu__item';
+        sideMenuItem.innerHTML = `<a>${ character.name }</a>`;
+        sideMenuList.appendChild(sideMenuItem);
+    })
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+    loadSideMenu();
+});
