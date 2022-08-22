@@ -132,18 +132,65 @@ const characters = [
 ];
 
 //On page loaded
-function loadSideMenu() {
+const loadSideMenu = () => {
     const sideMenuList = document.querySelector('.side-menu__list');
 
     characters.forEach((character) => {
         const sideMenuItem = document.createElement('li');
 
         sideMenuItem.className = 'side-menu__item';
-        sideMenuItem.innerHTML = `<a>${ character.name }</a>`;
+        sideMenuItem.innerHTML = `<a id="${ character.id }">${ character.name }</a>`;
         sideMenuList.appendChild(sideMenuItem);
-    })
+    });
+
+
+};
+
+const menuLinkOnClick = () => {
+    const sideMenuItems = document.querySelectorAll('.side-menu__list li a');
+
+    const characterItems = document.querySelectorAll('.character');
+    sideMenuItems.forEach((item, index) => {
+        item.addEventListener('click', toggleClass(characterItems, index));
+    });
+}
+
+const toggleClass = (arrayToChange, index) => () => {
+    for (let i = 0; i < arrayToChange.length; i++) {
+        const item = arrayToChange[i];
+
+        if (i === index) {
+            item.classList.remove('character_hide')
+        } else {
+            item.classList.add('character_hide');
+        }
+    }
+};
+
+const setImageAsBackground = (el, imageSrc) => el.style.backgroundImage = `url("${ imageSrc }")`;
+
+
+const loadMainContent = () => {
+    characters.forEach((character) => {
+        const characterBlock = document.createElement('div');
+        characterBlock.className = 'character character_hide';
+
+        characterBlock.innerHTML =
+            `<div class="character__image">
+             </div>
+             <h2 class="character__name">${ character.name }</h2>
+             <span class="character__location">${ character.location }</span>`;
+
+        setImageAsBackground(characterBlock.childNodes[0], character.image);
+
+        document.querySelector('main').appendChild(characterBlock);
+    });
+
+    document.querySelector('.character').classList.remove('character_hide');
 };
 
 window.addEventListener('DOMContentLoaded', () => {
     loadSideMenu();
+    loadMainContent();
+    menuLinkOnClick();
 });

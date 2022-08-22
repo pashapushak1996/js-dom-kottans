@@ -4,7 +4,7 @@
     --main-bg-color: #1D1B26;
     --main-text-color: #FFFFFF;
     --hover-color: #FD2D00;
-    --shadow-color: #06191D;
+    --shadow-color: #00c5c8;
     /*---Breakpoints---*/
     --sm-point: 576px;
     --md-point: 768px;
@@ -53,5 +53,52 @@ body {
 
 main {
     flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
 }
+
+.character {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    text-align: center;
+
+    animation: fadeIn 1s;
+}
+
+
+.character_hide {
+    display: none;
+}
+
+.character__name {
+    margin-top: 2.5rem;
+    font-size: 3.5rem;
+}
+
+
+.character__image {
+    width: 35rem;
+    height: 35rem;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: -18px 41px 93px -18px rgba(0, 197, 200, 0.39);
+}
+
+/*---Animation---*/
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
 
