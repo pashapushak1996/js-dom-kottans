@@ -1,4 +1,11 @@
 //Data to render
+fetch('https://rickandmortyapi.com/api/location/20')
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data);
+    });
 const characters = [
     {
         "id": 1,
@@ -123,12 +130,6 @@ const characters = [
         "location": "unknown",
         "image": "https://rickandmortyapi.com/api/character/avatar/19.jpeg",
     },
-    {
-        "id": 20,
-        "name": "Ants in my Eyes Johnson",
-        "location": "Interdimensional Cable",
-        "image": "https://rickandmortyapi.com/api/character/avatar/20.jpeg",
-    }
 ];
 
 //On page loaded
@@ -160,7 +161,7 @@ const toggleClass = (arrayToChange, index) => () => {
         const item = arrayToChange[i];
 
         if (i === index) {
-            item.classList.remove('character_hide')
+            item.classList.remove('character_hide');
         } else {
             item.classList.add('character_hide');
         }

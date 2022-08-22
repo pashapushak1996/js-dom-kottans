@@ -6,7 +6,6 @@
     --hover-color: #FD2D00;
     --shadow-color: #00c5c8;
     /*---Breakpoints---*/
-    --sm-point: 576px;
     --md-point: 768px;
     --lg-point: 992px;
     --extra-lg-point: 1200px;
@@ -61,7 +60,7 @@ main {
 .character {
     display: flex;
     justify-content: center;
-    align-self: center;
+    align-items: center;
     flex-direction: column;
     text-align: center;
 
@@ -74,8 +73,10 @@ main {
 }
 
 .character__name {
-    margin-top: 2.5rem;
+    margin: 2rem 0;
     font-size: 3.5rem;
+
+    color: var(--shadow-color);
 }
 
 
@@ -89,6 +90,11 @@ main {
     box-shadow: -18px 41px 93px -18px rgba(0, 197, 200, 0.39);
 }
 
+.character__location {
+    font-size: 1.6rem;
+    color: var(--hover-color);
+}
+
 /*---Animation---*/
 
 @keyframes fadeIn {
@@ -98,6 +104,44 @@ main {
     100% {
         opacity: 1;
     }
+}
+
+/*Media queries*/
+
+@media (max-width: 768px) {
+    .character__image {
+        width: 25rem;
+        height: 25rem;
+    }
+
+    .side-menu__item {
+        margin-bottom: 0.5rem;
+    }
+
+    .side-menu__item a {
+        font-size: 1.6rem;
+        transition: 0.3s;
+    }
+
+    .character__name {
+        margin: 1rem 0;
+    }
+}
+
+@media (max-width: 586px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side-menu__list {
+        text-align: center;
+    }
+
+    .main {
+        align-self: center;
+    }
+
 }
 
 
