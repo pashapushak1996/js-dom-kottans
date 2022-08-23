@@ -1,11 +1,3 @@
-//Data to render
-fetch('https://rickandmortyapi.com/api/location/20')
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        console.log(data);
-    });
 const characters = [
     {
         "id": 1,
