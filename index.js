@@ -144,28 +144,27 @@ const menuLinkOnClick = () => {
     const sideMenuItems = document.querySelectorAll('.side-menu__item');
 
     const characterItems = document.querySelectorAll('.character');
-    sideMenuItems.forEach((item, index) => {
-        item.addEventListener('click', toggleClass(characterItems, index, 'character_hide'));
 
-        item.addEventListener('click', toggleClass(sideMenuItems, index, 'active', 'add'));
+    sideMenuItems.forEach((item) => {
+
+        item.addEventListener('click', ({ target }) => {
+            characterItems.forEach((character, index) => {
+                if (target.id === character.dataset['id']) {
+                    target.parentNode.classList.add('active');
+                    character.classList.remove('character_hide');
+                } else {
+                    character.classList.add('character_hide');
+                    sideMenuItems[index].classList.remove('active');
+                }
+            });
+        });
     });
 }
-
-const toggleClass = (arrayToChange, index, className, method = 'remove') => () => {
-    for (let i = 0; i < arrayToChange.length; i++) {
-        const item = arrayToChange[i];
-
-        if (i === index) {
-            method === 'add' ? item.classList.add(className) : item.classList.remove(className);
-        } else {
-            method === 'add' ? item.classList.remove(className) : item.classList.add(className);
-        }
-    }
-};
 
 const loadMainContent = () => {
     const characterBlocks = characters.map((character) => {
         const characterBlock = document.createElement('div');
+        characterBlock.setAttribute('data-id', character.id);
         characterBlock.className = 'character character_hide';
 
         characterBlock.innerHTML =
