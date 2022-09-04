@@ -138,28 +138,34 @@ const loadSideMenu = () => {
 
     sideMenuList.append(...sideMenuListItems);
 
+    sideMenuList.addEventListener('click', menuLinkOnClick);
 };
 
-const listPerson = Array.from(document.querySelectorAll('.character'));
-const menuList = document.querySelector('.side-menu__list');
-const sideMenuItems = Array.from(document.querySelectorAll('.side-menu__item'));
-const hideActiveLink = () => sideMenuItems.forEach(link => link.classList.remove('active'));
+const hideActiveLink = () => {
+    const sideMenuItems = Array.from(document.querySelectorAll('.side-menu__item'));
+    sideMenuItems.forEach(link => link.classList.remove('active'));
+}
 
-const toggleMenuItem = (selectItem) => {
+const toggleMenuItem = (selectedItem) => {
+    const listPerson = Array.from(document.querySelectorAll('.character'));
     listPerson.forEach(item => {
-        if(item.dataset.id === selectItem.id) {
+        if (item.dataset.id === selectedItem.id) {
             item.classList.remove('character_hide');
         } else {
             item.classList.add('character_hide');
         }
     });
 }
-const menuLinkOnClick = ({target}) => {
-    hideActiveLink();
-    target.parentElement.classList.add('active');
-    toggleMenuItem(target);
+
+function menuLinkOnClick({ target }) {
+    const { id } = target;
+
+    if (id) {
+        hideActiveLink();
+        target.parentElement.classList.add('active');
+        toggleMenuItem(target);
+    }
 }
-menuList.addEventListener('click', menuLinkOnClick);
 
 const loadMainContent = () => {
     const characterBlocks = characters.map((character) => {
@@ -185,5 +191,4 @@ const loadMainContent = () => {
 window.addEventListener('DOMContentLoaded', () => {
     loadSideMenu();
     loadMainContent();
-    menuLinkOnClick();
 });
